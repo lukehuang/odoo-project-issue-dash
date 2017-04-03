@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/semantic.css">
+
+    <script src="https://semantic-ui.com/examples/assets/library/iframe.js"></script>
+    <script src="https://semantic-ui.com/examples/assets/library/iframe.js"></script>
+
+    <style type="text/css">
+    body > .ui.container {
+      margin-top: 3em;
+    }
+    iframe {
+      border: none;
+      width: calc(100% + 2em);
+      margin: 0em -1em;
+      height: 300px;
+    }
+    iframe html {
+      overflow: hidden;
+    }
+    iframe body {
+      padding: 0em;
+    }
+
+    .ui.container > h1 {
+      font-size: 3em;
+      text-align: center;
+      font-weight: normal;
+    }
+    .ui.container > h2.dividing.header {
+      font-size: 2em;
+      font-weight: normal;
+      margin: 4em 0em 3em;
+    }
+
+    .ui.table {
+      table-layout: fixed;
+    }
+
+    .display {
+        display: none;
+    }
+
+    </style>
+
+    <title>CRM Statistics</title>
+
+    <meta http-equiv="refresh" content="5">
+
+</head>
+<body>
+
+{% block content %}
+
+<div class="ui fluid container segment">
+<a name="page2"></a>
+ <div class="ui five cards">
+  <div class="card">
+<table class="ui striped table">
+        <thead>
+         <tr><th><h2>New</h2></th></tr>
+        </thead>
+        <tbody>
+                     {% for listofnew in listofnew %}
+         <tr>
+             <td><h3>{{ listofnew.id }}</h3></td>
+
+         </tr>
+                     {% endfor %}
+        </tbody>
+</table>
+</div>
+   <div class="card">
+<table class="ui striped table">
+        <thead>
+         <tr><th><h2>Open</h2></th></tr>
+        </thead>
+        <tbody>
+                     {% for listofopen in listofopen %}
+         <tr>
+             <td><h3>{{ listofopen.id }}</h3></td>
+
+         </tr>
+                     {% endfor %}
+        </tbody>
+</table>
+   </div>
+    <div class="card">
+<table class="ui striped table">
+        <thead>
+         <tr><th><h2>Awaiting Customer</h2></th></tr>
+        </thead>
+        <tbody>
+                     {% for listofawaitingcustomer in listofawaitingcustomer %}
+         <tr>
+             <td><h3>{{ listofawaitingcustomer.id }}</h3></td>
+
+         </tr>
+                     {% endfor %}
+        </tbody>
+</table>
+   </div>
+     <div class="card">
+<table class="ui striped table">
+        <thead>
+         <tr><th><h2>Released</h2></th></tr>
+        </thead>
+        <tbody>
+                     {% for releasedcalls in releasedcalls %}
+         <tr>
+             <td><h3>{{ releasedcalls.id }}</h3></td>
+
+         </tr>
+                     {% endfor %}
+        </tbody>
+</table>
+   </div>
+<div class="card">
+<table class="ui striped table">
+        <thead>
+         <tr><th><h2>In Progress</h2></th></tr>
+        </thead>
+        <tbody>
+                     {% for listofinprogress in listofinprogress %}
+         <tr>
+             <td><h3>{{ listofinprogress.id }}</h3></td>
+
+         </tr>
+                     {% endfor %}
+        </tbody>
+</table>
+   </div>
+ </div>
+        <h2><a href="/">Goto Page 1</a></h2>
+</div>
+
+{% endblock content %}
+
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function () {
+
+    var activeDiv = 1;
+    showDiv(activeDiv); // show first one
+    var timer = setInterval(changeDiv, 15000);
+
+    function changeDiv() {
+        activeDiv++;
+        if (activeDiv == 4) {
+            activeDiv == 1;
+        }
+        showDiv(activeDiv);
+    }
+
+    function showDiv(num) {
+        $('div.display').hide();
+        $('#div' + num).fadeIn();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

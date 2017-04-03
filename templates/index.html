@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/semantic.css">
+
+    <script src="https://semantic-ui.com/examples/assets/library/iframe.js"></script>
+    <script src="https://semantic-ui.com/examples/assets/library/iframe.js"></script>
+
+    <style type="text/css">
+    body > .ui.container {
+      margin-top: 3em;
+    }
+    iframe {
+      border: none;
+      width: calc(100% + 2em);
+      margin: 0em -1em;
+      height: 300px;
+    }
+    iframe html {
+      overflow: hidden;
+    }
+    iframe body {
+      padding: 0em;
+    }
+
+    .ui.container > h1 {
+      font-size: 3em;
+      text-align: center;
+      font-weight: normal;
+    }
+    .ui.container > h2.dividing.header {
+      font-size: 2em;
+      font-weight: normal;
+      margin: 4em 0em 3em;
+    }
+
+
+    .ui.table {
+      table-layout: fixed;
+    }
+
+
+    .display {
+        display: none;
+    }
+
+    </style>
+
+    <title>CRM Statistics</title>
+
+    <meta http-equiv="refresh" content="5">
+
+
+</head>
+<body>
+
+
+<div id = "show" class="ui fluid container segment">
+    <div class="ui fluid raised very padded container segment">
+
+{% block content %}
+
+
+<!-- First row -->
+    <div class="ui five cards">
+    <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>Open</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Current open calls</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                <div class="ui fluid massive label">
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                        {% for opencalls in opencalls %}
+                            {{ opencalls.nooftickets }}
+                        {% endfor %}
+
+                        </div>
+                        <div class="label">
+                            Tickets
+                        </div>
+                    </div>
+                </div>
+            </div>
+</center>
+
+
+        </div>
+
+    </div>
+
+
+        <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>New</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Current new calls</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                <div class="ui fluid massive label">
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                        {% for newcalls in newcalls %}
+                            {{ newcalls.nooftickets }}
+                        {% endfor %}
+
+                        </div>
+                        <div class="label">
+                            Tickets
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+</center>
+        </div>
+
+    </div>
+    <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>Released</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Current released calls</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                <div class="ui fluid massive label">
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                        {% for releasedcalls in releasedcalls %}
+                            {{ releasedcalls.nooftickets }}
+                        {% endfor %}
+                        </div>
+                        <div class="label">
+                            Tickets
+                        </div>
+                    </div>
+                </div>
+            </div>
+</center>
+
+
+        </div>
+
+    </div>
+        <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>Awaiting Customer</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Current awaiting customer calls</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                <div class="ui fluid massive label">
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                        {% for awaitingcustomercalls in awaitingcustomercalls %}
+                            {{ awaitingcustomercalls.nooftickets }}
+                        {% endfor %}
+
+                        </div>
+                        <div class="label">
+                            Tickets
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+</center>
+        </div>
+
+    </div>
+
+        <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>In Progress</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Current calls in progress</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                <div class="ui fluid massive label">
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                        {% for inprogresscalls in inprogresscalls %}
+                            {{ inprogresscalls.nooftickets }}
+                        {% endfor %}
+
+                        </div>
+                        <div class="label">
+                            Tickets
+                        </div>
+                    </div>
+                </div>
+            </div>
+</center>
+
+
+        </div>
+
+    </div>
+
+    </div>
+
+<!-- End First row -->
+
+<!-- Second row -->
+
+    <div class="ui three cards">
+    <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>User1</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Working on</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                    {% if inprogress_user1 %}
+                     <div class="ui fluid massive green label">
+
+                    {% else %}
+                         <div class="ui fluid massive red label">
+                    {% endif %}
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                    {% if inprogress_user1 %}
+                        {% for inprogress_user1 in inprogress_user1 %}
+                            {{ inprogress_user1.id }} </br>
+                        {% endfor %}
+                    {% else %}
+                        No ticket(s)
+                    {% endif %}
+
+                        </div>
+                        <div class="label">
+                            Ticket(s)
+                        </div>
+                    </div>
+                </div>
+            </div>
+</center>
+
+
+        </div>
+
+    </div>
+
+
+        <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>User2</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Working on </h3>
+
+            </div>
+
+<center>
+            <div class="ui labels">
+                    {% if inprogress_user2 %}
+                     <div class="ui fluid massive green label">
+
+                    {% else %}
+                         <div class="ui fluid massive red label">
+                    {% endif %}
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                    {% if inprogress_user2 %}
+                        {% for inprogress_user2 in inprogress_user2 %}
+                            {{ inprogress_user2.id }} </br>
+                        {% endfor %}
+                    {% else %}
+                        No ticket(s)
+                    {% endif %}
+
+                        </div>
+                        <div class="label">
+                            ticket(s)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</center>
+        </div>
+
+    </div>
+
+        <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>User 3</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Working on</h3>
+
+            </div>
+
+<center>
+            <div class="ui labels">
+
+                    {% if inprogress_user3 %}
+                     <div class="ui fluid massive green label">
+
+                    {% else %}
+                         <div class="ui fluid massive red label">
+                    {% endif %}
+
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                    {% if inprogress_user3 %}
+                        {% for inprogress_user3 in inprogress_user3 %}
+                            {{ inprogress_user3.id }} </br>
+                        {% endfor %}
+                    {% else %}
+                        No ticket(s)
+                    {% endif %}
+
+                        </div>
+                        <div class="label">
+                            Ticket(s)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+</center>
+        </div>
+
+    </div>
+
+    </div>
+
+<!-- End second row -->
+
+<!-- Third row -->
+
+    <div class="ui four cards">
+    <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>User 4</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Working on</h3>
+
+            </div>
+
+<center>
+            <div class="ui labels">
+                    {% if inprogress_user4 %}
+                     <div class="ui fluid massive green label">
+
+                    {% else %}
+                         <div class="ui fluid massive red label">
+                    {% endif %}
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                    {% if inprogress_user4 %}
+                        {% for inprogress_user4 in inprogress_user4 %}
+                            {{ inprogress_user4.id }} </br>
+                        {% endfor %}
+                    {% else %}
+                        No ticket(s)
+                    {% endif %}
+
+                        </div>
+                        <div class="label">
+                            Ticket(s)
+                        </div>
+                    </div>
+                </div>
+            </div>
+</center>
+
+        </div>
+
+    </div>
+
+
+        <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>User 5</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Working on</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                    {% if inprogress_user5 %}
+                     <div class="ui fluid massive green label">
+
+                    {% else %}
+                         <div class="ui fluid massive red label">
+                    {% endif %}
+
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                    {% if inprogress_user5 %}
+                        {% for inprogress_user5 in inprogress_user5 %}
+                            {{ inprogress_user5.id }} </br>
+                        {% endfor %}
+                    {% else %}
+                        No ticket(s)
+                    {% endif %}
+
+                        </div>
+                        <div class="label">
+                            Ticket(s)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+</center>
+        </div>
+
+    </div>
+
+        <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>User 6</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Working on</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                    {% if inprogress_user6 %}
+                     <div class="ui fluid massive green label">
+
+                    {% else %}
+                         <div class="ui fluid massive red label">
+                    {% endif %}
+
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                    {% if inprogress_user6 %}
+                        {% for inprogress_user6 in inprogress_user6 %}
+                            {{ inprogress_user6.id }} </br>
+                        {% endfor %}
+                    {% else %}
+                        No ticket(s)
+                    {% endif %}
+
+                        </div>
+                        <div class="label">
+                            Ticket(s)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+</center>
+        </div>
+        </div>
+
+        <div class="card">
+
+        <div class="content">
+
+            <div class="header">
+
+                <h2>User 7</h2>
+
+            </div>
+            <div class="meta">
+
+                <h3>Working on</h3>
+
+            </div>
+
+
+<center>
+            <div class="ui labels">
+                    {% if inprogress_uesr7 %}
+                     <div class="ui fluid massive green label">
+
+                    {% else %}
+                         <div class="ui fluid massive red label">
+                    {% endif %}
+
+                    <div class="ui large statistic">
+                        <div class="value">
+
+                    {% if inprogress_user7 %}
+                        {% for inprogress_user7 in inprogress_user7 %}
+                            {{ inprogress_user7.id }} </br>
+                        {% endfor %}
+                    {% else %}
+                        No ticket(s)
+                    {% endif %}
+
+                        </div>
+                        <div class="label">
+                            Ticket(s)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+</center>
+        </div>
+
+    </div>
+
+    </div>
+        <h2><a href="index2">Goto Page 2</a></h2>
+    </div>
+
+<!-- End third row -->
+
+
+
+</div>
+</div>
+
+{% endblock content %}
+
+<!-- TODO redunant and should be removed -->
+
+<script type="text/javascript" language="javascript">
+
+$(document).ready(function () {
+
+    var activeDiv = 1;
+    showDiv(activeDiv); // show first one
+    var timer = setInterval(changeDiv, 15000);
+
+    function changeDiv() {
+        activeDiv++;
+        if (activeDiv == 4) {
+            activeDiv == 1;
+        }
+        showDiv(activeDiv);
+    }
+
+    function showDiv(num) {
+        $('div.display').hide();
+        $('#div' + num).fadeIn();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
